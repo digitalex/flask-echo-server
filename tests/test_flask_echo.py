@@ -12,3 +12,7 @@ def test_echo(client):
     assert response.status_code == 200
     assert response.get_json() == {"echo": {"message": "Hello, World!"}}
 
+def test_bug_report(client):
+    response = client.post('/bugreport', json={"report": "This is a bug report."})
+    assert response.status_code == 200
+    assert response.get_json() == {"status": "ok"}
